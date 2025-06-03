@@ -28,7 +28,7 @@ This is the most critical step. You need to identify the unique physical USB pat
     
     (Note: It might show as `/dev/video0` or `/dev/video1` depending on other video devices. Just ensure only one webcam is plugged in).
     
-    Look for the specific line representing the webcam's device path. Based on your previous output, it should look something like:
+    Look for the specific line representing the webcam's device path. It should look something like:
     
     text
     
