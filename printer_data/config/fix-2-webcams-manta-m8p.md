@@ -130,7 +130,7 @@ Now, you'll create a `udev` rule file that uses these unique identifiers to crea
 
 ## 2\. Addressing USB Bandwidth Saturation (UVC Quirk)
 
-Some cameras, like the OV5640 mentioned, might request maximum USB bandwidth regardless of the configured resolution, leading to saturation when multiple cameras are used. The Linux UVC (USB Video Class) driver has a `UVC_QUIRK_FIX_BANDWIDTH` for this.
+Some cameras (ex: OV5640) might request maximum USB bandwidth regardless of the configured resolution, leading to saturation when multiple cameras are used. The Linux UVC (USB Video Class) driver has a `UVC_QUIRK_FIX_BANDWIDTH` for this.
 
 ### 2.1. Enable the `UVC_QUIRK_FIX_BANDWIDTH` Quirk
 
