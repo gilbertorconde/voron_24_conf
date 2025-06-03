@@ -16,7 +16,7 @@ This is the most critical step. You need to identify the unique physical USB pat
 
 1.  **Unplug all webcams** from your Raspberry Pi.
     
-2.  **Plug in ONLY your first webcam** (the one you want to be `/dev/webcam1`).
+2.  **Plug in ONLY your first webcam in is final destination USB port** (the one you want to be `/dev/webcam1`).
     
 3.  Open a terminal on your Raspberry Pi and run the following command to get its unique attributes, specifically focusing on its `KERNELS` (USB path), `idVendor`, and `idProduct`:
     
