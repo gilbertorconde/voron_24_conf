@@ -93,7 +93,7 @@ Now, you'll create a `udev` rule file that uses these unique identifiers to crea
         *   `SUBSYSTEM=="video4linux"`: Targets video devices.
         *   `KERNEL=="video*"`: Matches kernel device names starting with "video".
         *   `ATTRS{idVendor}=="0ac8"` & `ATTRS{idProduct}=="0345"`: Match your webcam's specific Vendor and Product IDs.
-        *   `DEVPATH=="*1-1.1.6/1-1.1.6:1.0*"`: This is the critical part, matching the unique physical path where the webcam is connected.
+        *   `DEVPATH=="*1-1.1.6/1-1.1.6:1.0*"`: This is the critical part if you have identical cameras, matching the unique physical path where the webcam is connected.
         *   `SYMLINK+="webcam1"`: Creates the symbolic link `/dev/webcam1`.
 3.  Save the file (Press `Ctrl+X`, then `Y` to confirm, then `Enter`).
     
