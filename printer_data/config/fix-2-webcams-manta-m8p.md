@@ -60,7 +60,7 @@ This is the most critical step. You need to identify the unique physical USB pat
     
     **Make a note of these values for your second webcam.**
     
-    _(In your case, both cameras share `idVendor="0ac8"` and `idProduct="0345"`, which makes the `KERNELS` or `DEVPATH` crucial for differentiation)._
+    _(If both cameras share `idVendor` and `idProduct` (2 identical cameras), which makes the `KERNELS` or `DEVPATH` crucial for differentiation)._
     
 
 ### 1.2. Create the `udev` Rules File
