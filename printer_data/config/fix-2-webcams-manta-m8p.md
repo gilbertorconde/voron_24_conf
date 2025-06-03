@@ -1,6 +1,8 @@
 # Setting Up Two Webcams on Raspberry Pi CM4 (Manta M8P) for Klipper
 
 This guide provides a robust solution for running two USB webcams on a Raspberry Pi Compute Module 4 (CM4), especially when paired with a board like the BTT Manta M8P. It addresses two primary challenges: inconsistent `/dev/videoX` naming and potential USB bandwidth saturation.
+The information related with the kernel quirk was originally from this investigation:
+https://github.com/mainsail-crew/crowsnest/issues/109#issuecomment-2028029817
 
 ## 1\. Ensuring Consistent Webcam Naming with `udev` Rules
 
