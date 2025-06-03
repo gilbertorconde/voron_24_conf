@@ -249,9 +249,9 @@ Ensure your `/boot/firmware/config.txt` is correctly configured for the CM4's US
         text
         
         \[cm4\]
-        # Enable host mode on the 2711 built-in XHCI USB controller.
-        # This line should be removed if the legacy DWC2 controller is required
-        # (e.g. for USB device mode) or if USB support is not required.
+        \# Enable host mode on the 2711 built-in XHCI USB controller.
+        \# This line should be removed if the legacy DWC2 controller is required
+        \# (e.g. for USB device mode) or if USB support is not required.
         otg\_mode=1
         
         **If you have `otg_mode=1` under `[cm4]`, then your USB controller is correctly configured for modern host mode. Do NOT add `dtoverlay=dwc2,dr_mode=host`, as this would enable a conflicting legacy controller.**
