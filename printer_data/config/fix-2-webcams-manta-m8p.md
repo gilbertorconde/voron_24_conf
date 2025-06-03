@@ -146,8 +146,9 @@ Some cameras (ex: OV5640) might request maximum USB bandwidth regardless of the 
 3.  Add the following single line to the file:
     
     text
-    
+    ```
     options uvcvideo quirks=0x80
+    ```
     
 4.  Save the file (Ctrl+X, Y, Enter).
 
