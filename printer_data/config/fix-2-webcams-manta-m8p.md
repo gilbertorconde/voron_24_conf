@@ -107,6 +107,7 @@ Now, you'll create a `udev` rule file that uses these unique identifiers to crea
     ```
     sudo udevadm control --reload-rules
     sudo udevadm trigger
+    sudo udevadm settle
     ```
     
 2.  Plug both webcams into the _same physical USB ports_ you identified in step 1.1.
