@@ -134,7 +134,7 @@ Some cameras (ex: OV5640) might request maximum USB bandwidth regardless of the 
 
 ### 2.1. Enable the `UVC_QUIRK_FIX_BANDWIDTH` Quirk
 
-1.  The `UVC_QUIRK_FIX_BANDWIDTH` quirk has a hexadecimal value of `0x80` (decimal `128`).
+1.  The `UVC_QUIRK_FIX_BANDWIDTH` quirk has a hexadecimal value of `0x80` (decimal `128`). Optionally we can activate another quirk on top of these one to further limit the frame rate. The `UVC_QUIRK_RESTRICT_FRAME_RATE` uses the value `0x280` (decimal `640`).
 2.  Create a `modprobe.d` configuration file to make this quirk persistent:
     
     bash
@@ -148,6 +148,8 @@ Some cameras (ex: OV5640) might request maximum USB bandwidth regardless of the 
     text
     ```
     options uvcvideo quirks=0x80
+    # or optionally:
+    # options uvcvideo quirks=0x280
     ```
     
 4.  Save the file (Ctrl+X, Y, Enter).
