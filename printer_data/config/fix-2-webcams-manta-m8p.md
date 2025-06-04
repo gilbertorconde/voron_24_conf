@@ -122,8 +122,8 @@ Now, you'll create a `udev` rule file that uses these unique identifiers to crea
     
     bash
     ```
-    lrwxrwxrwx 1 root root 6 Jun  3 15:44 /dev/webcam1 -> video1
-    lrwxrwxrwx 1 root root 6 Jun  3 15:44 /dev/webcam3 -> video3
+    lrwxrwxrwx 1 root root 6 Jun  3 15:44 /dev/webcam1 -> video0
+    lrwxrwxrwx 1 root root 6 Jun  3 15:44 /dev/webcam3 -> video2
     ```
     
     (The `-> videoX` part will still be dynamic, but `webcam1` and `webcam2` will consistently point to the correct physical camera.)
