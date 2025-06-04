@@ -164,7 +164,7 @@ For the quirk to take effect immediately, you need to unload and then reload the
     
     ```
     sudo systemctl stop moonraker
-    sudo systemctl stop crowsnest # If you are using crowsnest
+    sudo systemctl stop crowsnest
     ```
     
 2.  Remove the `uvcvideo` module:
