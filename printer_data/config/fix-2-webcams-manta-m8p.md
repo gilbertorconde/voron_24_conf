@@ -146,7 +146,7 @@ This will wait up to 10 seconds for both symlinks to exist before starting Crows
 
 3. Reload systemd and reboot:
 ```bash
-udo systemctl daemon-reload
+sudo systemctl daemon-reload
 sudo systemctl restart crowsnest
 ```
 
