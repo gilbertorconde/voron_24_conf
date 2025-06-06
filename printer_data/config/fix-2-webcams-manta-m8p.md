@@ -129,7 +129,7 @@ Now, you'll create a `udev` rule file that uses these unique identifiers to crea
     
     (The `-> videoX` part will still be dynamic, but `webcam1` and `webcam2` will consistently point to the correct physical camera.)
 
-### 1.4. Udev and Crowsnest boot starting time issues
+### 1.4. `udev` and Crowsnest boot starting time issues
 
 If, after reboot the `/dev/webcam*` assignments seems to be wrong (pointing to wrong `dev/video*`) it's possible that Crowsnest is starting before all webcam devices and symlinks are reliably in place. To fix this issue we need to delay Crowsnest start.
 
