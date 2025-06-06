@@ -135,15 +135,19 @@ If, after reboot the `/dev/webcam*` assignments seems to be wrong (pointing to w
 
 1. create a systemd override:
 ```bash
-mkdir /etc/systemd/service/crowsnest.service.d
-echo /etc/systemd/service/crowsnest.service.d/override.conf << EOF
+sudo mkdir /etc/systemd/system/crowsnest.service.d
+sudo nano /etc/systemd/system/crowsnest.service.d/override.conf
+```
+
+2. Add this to the file:
+```bash
 [Service]
 ExecStartPre=/bin/bash -c 'for i in {1..10}; do [ -e /dev/webcam1 ] && [ -e /dev/webcam2 ] && exit 0; sleep 1; done; exit 1'
-EOF
 ```
+
 This will wait up to 10 seconds for both symlinks to exist before starting Crowsnest.
 
-2. Reload systemd and reboot:
+3. Reload systemd and reboot:
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl restart crowsnest
