@@ -133,18 +133,17 @@ Now, you'll create a `udev` rule file that uses these unique identifiers to crea
 
 If, after reboot the `/dev/webcam*` assignments seems to be wrong (pointing to wrong `dev/video*`) it's possible that Crowsnest is starting before all webcam devices and symlinks are reliably in place. To fix this issue we need to delay Crowsnest start.
 
-1. reate a systemd override:
+1. create a systemd override:
 ```bash
-sudo systemctl edit crowsnest
-```
-
-2. Add this under the `[Service]` section:
-```ini
+mkdir /etc/systemd/service/crowsnest.service.d
+echo /etc/systemd/service/crowsnest.service.d/override.conf << EOF
+[Service]
 ExecStartPre=/bin/bash -c 'for i in {1..10}; do [ -e /dev/webcam1 ] && [ -e /dev/webcam2 ] && exit 0; sleep 1; done; exit 1'
+EOF
 ```
 This will wait up to 10 seconds for both symlinks to exist before starting Crowsnest.
 
-3. Reload systemd and reboot:
+2. Reload systemd and reboot:
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl restart crowsnest
