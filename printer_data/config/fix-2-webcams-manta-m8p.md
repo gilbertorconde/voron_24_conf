@@ -82,11 +82,11 @@ Now, you'll create a `udev` rule file that uses these unique identifiers to crea
     ```
     # Rule for Webcam 1 (plugged into specific port on hub, path 1-1.1.6)
     # Vendor ID: 0ac8, Product ID: 0345
-    SUBSYSTEM=="video4linux", KERNEL=="video*", ATTRS{idVendor}=="0ac8", ATTRS{idProduct}=="0345", DEVPATH=="*1-1.1.6/1-1.1.6:1.0*", SYMLINK+="webcam1"
+    ACTION=="add|change", SUBSYSTEM=="video4linux", KERNEL=="video*", ATTRS{idVendor}=="0ac8", ATTRS{idProduct}=="0345", DEVPATH=="*1-1.1.6/1-1.1.6:1.0*", SYMLINK+="webcam1"
     
     # Rule for Webcam 2 (plugged into specific port on hub, path 1-1.3)
     # Vendor ID: 0ac8, Product ID: 0345
-    SUBSYSTEM=="video4linux", KERNEL=="video*", ATTRS{idVendor}=="0ac8", ATTRS{idProduct}=="0345", DEVPATH=="*1-1.3/1-1.3:1.0*", SYMLINK+="webcam2"
+    ACTION=="add|change", SUBSYSTEM=="video4linux", KERNEL=="video*", ATTRS{idVendor}=="0ac8", ATTRS{idProduct}=="0345", DEVPATH=="*1-1.3/1-1.3:1.0*", SYMLINK+="webcam2"
     ```
     
     *   **Explanation:**
@@ -142,10 +142,10 @@ sudo nano /etc/systemd/system/crowsnest.service.d/override.conf
 2. Add this to the file:
 ```bash
 [Service]
-ExecStartPre=/bin/bash -c 'for i in {1..10}; do [ -e /dev/webcam1 ] && [ -e /dev/webcam2 ] && exit 0; sleep 1; done; exit 1'
+ExecStartPre=/bin/bash -c 'for i in {1..10}; do [ "$(readlink -f /dev/webcam1)" = "/dev/video0" ] && [ "$(readlink -f /dev/webcam2)" = "/dev/video2" ] && exit 0; sleep 1; done; exit 1'
 ```
 
-This will wait up to 10 seconds for both symlinks to exist before starting Crowsnest.
+Replace the /dev/webcam* and /dev/video* for the desiered names/numbers. This will wait up to 10 seconds for both symlinks to exist before starting Crowsnest.
 
 3. Reload systemd and reboot:
 ```bash
