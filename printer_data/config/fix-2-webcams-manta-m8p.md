@@ -129,6 +129,27 @@ Now, you'll create a `udev` rule file that uses these unique identifiers to crea
     
     (The `-> videoX` part will still be dynamic, but `webcam1` and `webcam2` will consistently point to the correct physical camera.)
 
+### 1.4. Udev and Crowsnest boot starting time issues
+
+If, after reboot the `/dev/webcam*` assignments seems to be wrong (pointing to wrong `dev/video*`) it's possible that Crowsnest is starting before all webcam devices and symlinks are reliably in place. To fix this issue we need to delay Crowsnest start.
+
+1. reate a systemd override:
+```bash
+sudo systemctl edit crowsnest
+```
+
+2. Add this under the `[Service]` section:
+```ini
+ExecStartPre=/bin/bash -c 'for i in {1..10}; do [ -e /dev/webcam1 ] && [ -e /dev/webcam2 ] && exit 0; sleep 1; done; exit 1'
+```
+This will wait up to 10 seconds for both symlinks to exist before starting Crowsnest.
+
+3. Reload systemd and reboot:
+```bash
+udo systemctl daemon-reload
+sudo systemctl restart crowsnest
+```
+
 ## 2\. Addressing USB Bandwidth Saturation (UVC Quirk)
 
 Some cameras (ex: OV5640) might request maximum USB bandwidth regardless of the configured resolution, leading to saturation when multiple cameras are used. The Linux UVC (USB Video Class) driver has a `UVC_QUIRK_FIX_BANDWIDTH` for this.
