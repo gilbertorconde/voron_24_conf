@@ -47,7 +47,7 @@ This is the most critical step. You need to identify the unique physical USB pat
     bash
     
     ```
-    udevadm info --name=/dev/video0 --attribute-walk | grep -E 'KERNELS|idVendor|idProduct'
+    udevadm info --name=/dev/video2 --attribute-walk | grep -E 'KERNELS|idVendor|idProduct'
     ```
     
     Again, look for its unique `KERNELS` value, `idVendor`, and `idProduct`. It should resemble:
